@@ -27,6 +27,8 @@ echo "PREV_LVL_EXP: $PREV_LEVEL_EXP"
 echo "CURR_EXP: $CURR_EXP"
 
 sed -e "s/{{.*TICKS.*}}/0/g" $MERMAID_TPL
+sed -e "s/{{\tTICKS\t}}/0/g" $MERMAID_TPL
+sed -e "s/{{[[:space:]]TICKS[[:space:]]}}/0/g" $MERMAID_TPL
 
 sed \
   -e "s/{{[[:SPACE:]]TICKS[[:SPACE:]]}}/0/g" \
