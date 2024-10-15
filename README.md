@@ -9,6 +9,6 @@ gantt
     axisFormat %s
     tickInterval 10second
     section Exp
-        ' : 0, 4
-        ' : crit, 4, 100
+        ' : 0, 21
+        ' : crit, 21, 100
 ```
