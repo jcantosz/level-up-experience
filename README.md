@@ -1,4 +1,4 @@
-### Level 1 --> 2 Progress
+### Level 8 --> 9 Progress
 ```mermaid
 ---
 displayMode: compact
@@ -7,8 +7,8 @@ displayMode: compact
 gantt
     dateFormat X
     axisFormat %s
-    tickInterval 10second
+    tickInterval 21second
     section Exp
-        ' : 0, 0
-        ' : crit, 0, 100
+        ' : 1009, 1200
+        ' : crit, 1200, 1221
 ```
