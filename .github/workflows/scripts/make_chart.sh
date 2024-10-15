@@ -1,8 +1,5 @@
 #!/bin/bash
 
-pwd
-ls -la
-ls -la .config
 EXP_FILE=".config/current.exp"
 LVLS_FILE=".config/levels.exp"
 MERMAID_TPL=".config/graph.tpl"
@@ -30,9 +27,16 @@ echo "PREV_LVL_EXP: $PREV_LEVEL_EXP"
 echo "CURR_EXP: $CURR_EXP"
 
 sed \
-  -e "s/{{[[:SPACE:]]?TICKS[[:SPACE:]]}}/$PREV_LVL_EXP/g" \
-  -e "s/{{[[:SPACE:]]PREV_LVL_EXP[[:SPACE:]]}}/$PREV_LVL_EXP/g" \
-  -e "s/{{[[:SPACE:]]CURR_EXP[[:SPACE:]]}}/$CURR_EXP/g" \
-  -e "s/{{[[:SPACE:]]CURR_LVL_EXP[[:SPACE:]]}}/$CURR_LVL_EXP/g" \
+  -e "s/{{[[:SPACE:]]?TICKS[[:SPACE:]]}}/0/g" \
+  -e "s/{{[[:SPACE:]]PREV_LVL_EXP[[:SPACE:]]}}/0/g" \
+  -e "s/{{[[:SPACE:]]CURR_EXP[[:SPACE:]]}}/0/g" \
+  -e "s/{{[[:SPACE:]]CURR_LVL_EXP[[:SPACE:]]}}/100/g" \
   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
+
+# sed \
+#   -e "s/{{[[:SPACE:]]?TICKS[[:SPACE:]]}}/$PREV_LVL_EXP/g" \
+#   -e "s/{{[[:SPACE:]]PREV_LVL_EXP[[:SPACE:]]}}/$PREV_LVL_EXP/g" \
+#   -e "s/{{[[:SPACE:]]CURR_EXP[[:SPACE:]]}}/$CURR_EXP/g" \
+#   -e "s/{{[[:SPACE:]]CURR_LVL_EXP[[:SPACE:]]}}/$CURR_LVL_EXP/g" \
+#   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
 
