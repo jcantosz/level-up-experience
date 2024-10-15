@@ -17,8 +17,9 @@ jobs:
       - name: Run script
         run: |
           POINTS=4
-          if [[ ${{ github.event.issue.status }} == "closed" ]]; then
+          if [[ ${{ github.event.issue.state }} == "closed" ]]; then
             POINTS=17
+          fi
           bash ./.github/workflows/scripts/make_chart.sh $POINTS
 
       - uses: stefanzweifel/git-auto-commit-action@v5
