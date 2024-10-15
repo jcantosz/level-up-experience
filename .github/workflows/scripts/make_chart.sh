@@ -9,10 +9,12 @@ CURR_EXP=$(head -1 $EXP_FILE)
 TICKS_PERCENT=10
 
 echo "exp: $CURR_EXP"
+CURR_LEVEL=0
 
 PREV_LEVEL_EXP=0
 CURR_LEVEL_EXP=0
 while read level; do
+  CURR_LEVEL=$(( CURR_LEVEL + 1))
   CURR_LEVEL_EXP=$level
   if [[ $CURR_EXP -lt $CURR_LEVEL_EXP ]]; then
     break;
@@ -33,9 +35,10 @@ echo "CURR_EXP: $CURR_EXP"
 #   -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LEVEL_EXP/g" \
 #   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
 
+echo "Level $((CURR_LEVEL-1)) -> $CURR_LEVEL Progress" > README.md
 sed \
   -e "s/{{[[:space:]]TICKS[[:space:]]}}/$TICKS/g" \
   -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LEVEL_EXP/g" \
   -e "s/{{[[:space:]]CURR_EXP[[:space:]]}}/$CURR_EXP/g" \
   -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LEVEL_EXP/g" \
-  $MERMAID_TPL > README.md
+  $MERMAID_TPL >> README.md
