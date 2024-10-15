@@ -2,8 +2,8 @@
 
 cd "$(dirname "$0")"
 
-EXP_FILE=".config/curr.exp"
-LVLS_FILE=".config/lvls.exp"
+EXP_FILE=".config/current.exp"
+LVLS_FILE=".config/levels.exp"
 MERMAID_TPL=".config/graph.tpl"
 
 CURR_EXP=$(head -1 $EXP_FILE)
