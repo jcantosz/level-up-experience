@@ -1,9 +1,8 @@
 name: level up
 
 on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+  issues:
+    types: [opened, closed]
 
 permissions:
   contents: write
@@ -17,6 +16,9 @@ jobs:
 
       - name: Run script
         run: |
-          bash ./.github/workflows/scripts/make_chart.sh
+          POINTS=4
+          if [[ ${{ github.event.issue.status }} == "closed" ]]; then
+            POINTS=17
+          bash ./.github/workflows/scripts/make_chart.sh $POINTS
 
       - uses: stefanzweifel/git-auto-commit-action@v5
