@@ -12,5 +12,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run script
-        run: ./.github/workflows/scripts/make_chart.sh
+        run: |
+          bash ./.github/workflows/scripts/make_chart.sh
 
