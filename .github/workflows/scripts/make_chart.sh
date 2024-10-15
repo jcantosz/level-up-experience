@@ -13,6 +13,8 @@ CURR_LEVEL=0
 
 PREV_LEVEL_EXP=0
 CURR_LEVEL_EXP=0
+
+## compare level to levels file and find the next amount of exp needed
 while read level; do
   CURR_LEVEL=$(( CURR_LEVEL + 1))
   CURR_LEVEL_EXP=$level
@@ -28,14 +30,8 @@ echo "CURR_LVL_EXP: $CURR_LEVEL_EXP"
 echo "PREV_LVL_EXP: $PREV_LEVEL_EXP"
 echo "CURR_EXP: $CURR_EXP"
 
-# sed \
-#   -e "s/{{[[:space:]]TICKS[[:space:]]}}/$TICKS/g" \
-#   -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LEVEL_EXP/g" \
-#   -e "s/{{[[:space:]]CURR_EXP[[:space:]]}}/$CURR_EXP/g" \
-#   -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LEVEL_EXP/g" \
-#   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
-
-echo "Level $((CURR_LEVEL-1)) -> $CURR_LEVEL Progress" > README.md
+## Write out to README
+echo "### Level $((CURR_LEVEL-1)) --> $CURR_LEVEL Progress" > README.md
 sed \
   -e "s/{{[[:space:]]TICKS[[:space:]]}}/$TICKS/g" \
   -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LEVEL_EXP/g" \
