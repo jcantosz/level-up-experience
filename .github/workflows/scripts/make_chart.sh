@@ -26,8 +26,10 @@ echo "CURR_LVL_EXP: $CURR_LEVEL_EXP"
 echo "PREV_LVL_EXP: $PREV_LEVEL_EXP"
 echo "CURR_EXP: $CURR_EXP"
 
+sed -e "s/{{.*TICKS.*}}/0/g" $MERMAID_TPL
+
 sed \
-  -e "s/{{[[:SPACE:]]?TICKS[[:SPACE:]]}}/0/g" \
+  -e "s/{{[[:SPACE:]]TICKS[[:SPACE:]]}}/0/g" \
   -e "s/{{[[:SPACE:]]PREV_LVL_EXP[[:SPACE:]]}}/0/g" \
   -e "s/{{[[:SPACE:]]CURR_EXP[[:SPACE:]]}}/0/g" \
   -e "s/{{[[:SPACE:]]CURR_LVL_EXP[[:SPACE:]]}}/100/g" \
