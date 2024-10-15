@@ -26,21 +26,12 @@ echo "CURR_LVL_EXP: $CURR_LEVEL_EXP"
 echo "PREV_LVL_EXP: $PREV_LEVEL_EXP"
 echo "CURR_EXP: $CURR_EXP"
 
-sed -e "s/{{.*TICKS.*}}/0/g" $MERMAID_TPL
-sed -e "s/{{\tTICKS\t}}/0/g" $MERMAID_TPL
-sed -e "s/{{[[:space:]]TICKS[[:space:]]}}/0/g" $MERMAID_TPL
+sed -e "s/{{[[:space:]]TICKS[[:space:]]}}/$PREV_LVL_EXP/g" $MERMAID_TPL
 
 sed \
-  -e "s/{{[[:SPACE:]]TICKS[[:SPACE:]]}}/0/g" \
-  -e "s/{{[[:SPACE:]]PREV_LVL_EXP[[:SPACE:]]}}/0/g" \
-  -e "s/{{[[:SPACE:]]CURR_EXP[[:SPACE:]]}}/0/g" \
-  -e "s/{{[[:SPACE:]]CURR_LVL_EXP[[:SPACE:]]}}/100/g" \
+  -e "s/{{[[:space:]]TICKS[[:space:]]}}/$PREV_LVL_EXP/g" \
+  -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LVL_EXP/g" \
+  -e "s/{{[[:space:]]CURR_EXP[[:space:]]}}/$CURR_EXP/g" \
+  -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LVL_EXP/g" \
   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
-
-# sed \
-#   -e "s/{{[[:SPACE:]]?TICKS[[:SPACE:]]}}/$PREV_LVL_EXP/g" \
-#   -e "s/{{[[:SPACE:]]PREV_LVL_EXP[[:SPACE:]]}}/$PREV_LVL_EXP/g" \
-#   -e "s/{{[[:SPACE:]]CURR_EXP[[:SPACE:]]}}/$CURR_EXP/g" \
-#   -e "s/{{[[:SPACE:]]CURR_LVL_EXP[[:SPACE:]]}}/$CURR_LVL_EXP/g" \
-#   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
 
