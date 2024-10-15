@@ -1,4 +1,4 @@
-Level 1 -> 2 Progress
+### Level 1 --> 2 Progress
 ```mermaid
 ---
 displayMode: compact
