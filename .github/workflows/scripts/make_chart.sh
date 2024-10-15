@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
+
 EXP_FILE=".config/curr.exp"
 LVLS_FILE=".config/lvls.exp"
 MERMAID_TPL=".config/graph.tpl"
