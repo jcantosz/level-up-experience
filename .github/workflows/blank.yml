@@ -1,0 +1,16 @@
+name: level up
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run script
+        run: ./.github/workflows/scripts/make_chart.sh
+
