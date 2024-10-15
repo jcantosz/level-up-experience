@@ -26,12 +26,16 @@ echo "CURR_LVL_EXP: $CURR_LEVEL_EXP"
 echo "PREV_LVL_EXP: $PREV_LEVEL_EXP"
 echo "CURR_EXP: $CURR_EXP"
 
-sed -e "s/{{[[:space:]]TICKS[[:space:]]}}/$PREV_LVL_EXP/g" $MERMAID_TPL
+# sed \
+#   -e "s/{{[[:space:]]TICKS[[:space:]]}}/$TICKS/g" \
+#   -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LEVEL_EXP/g" \
+#   -e "s/{{[[:space:]]CURR_EXP[[:space:]]}}/$CURR_EXP/g" \
+#   -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LEVEL_EXP/g" \
+#   $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
 
 sed \
-  -e "s/{{[[:space:]]TICKS[[:space:]]}}/$PREV_LVL_EXP/g" \
-  -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LVL_EXP/g" \
+  -e "s/{{[[:space:]]TICKS[[:space:]]}}/$TICKS/g" \
+  -e "s/{{[[:space:]]PREV_LVL_EXP[[:space:]]}}/$PREV_LEVEL_EXP/g" \
   -e "s/{{[[:space:]]CURR_EXP[[:space:]]}}/$CURR_EXP/g" \
-  -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LVL_EXP/g" \
-  $MERMAID_TPL >> $GITHUB_STEP_SUMMARY
-
+  -e "s/{{[[:space:]]CURR_LVL_EXP[[:space:]]}}/$CURR_LEVEL_EXP/g" \
+  $MERMAID_TPL > README.md
