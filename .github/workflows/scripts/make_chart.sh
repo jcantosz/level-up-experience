@@ -1,7 +1,8 @@
 #!/bin/bash
 
 pwd
-
+ls -la
+ls -la .config
 EXP_FILE=".config/current.exp"
 LVLS_FILE=".config/levels.exp"
 MERMAID_TPL=".config/graph.tpl"
