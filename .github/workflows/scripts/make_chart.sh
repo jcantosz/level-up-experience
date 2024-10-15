@@ -4,7 +4,11 @@ EXP_FILE=".config/current.exp"
 LVLS_FILE=".config/levels.exp"
 MERMAID_TPL=".config/graph.tpl"
 
+# Update the exp the user has
+NEW_EXP=$1
 CURR_EXP=$(head -1 $EXP_FILE)
+CURR_EXP=$((CURR_EXP + $NEW_EXP))
+echo $CURR_EXP > $EXP_FILE
 
 TICKS_PERCENT=10
 
